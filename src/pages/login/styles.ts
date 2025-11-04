@@ -17,9 +17,11 @@ export const style = StyleSheet.create({
     color: themas.colors.secondary
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: '100%',
+    height: '100%',
+    // backgroundColor: 'red'
   },
+
   title: {
     fontWeight: 'bold',
     marginTop: 40,

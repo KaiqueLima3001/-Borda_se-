@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from "../pages/Welcome/index";
 import Login from "../pages/login/index";
 import BottomRoutes from "./bottom.routes";
+import EscolhaPerfil from "../pages/EscolhaPerfil/index";
 
 export default function Routes (){
   const Stack = createStackNavigator();
@@ -18,6 +19,11 @@ export default function Routes (){
         }
       }}
     >
+      <Stack.Screen
+        name="EscolherPerfil"
+        component={EscolhaPerfil}
+        options={{headerShow: false}}
+      />
 
       <Stack.Screen
         name="Welcome"
