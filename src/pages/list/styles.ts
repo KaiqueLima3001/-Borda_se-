@@ -20,5 +20,34 @@ export const style = StyleSheet.create({
   },
   boxInput: {
     width: '80%'
+  },
+  card:{
+    width: '100%',
+    height: 60,
+    backgroundColor: themas.colors.background,
+    marginTop: 6,
+    borderRadius: 10,
+    justifyContent:'center',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: themas.colors.primary
+  },
+  rowCard:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  rowCardLeft:{
+    width: '70%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10
+  },
+  titleCard:{
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  descriptionCard:{
+    color: themas.colors.textSecondary
   }
 });

@@ -1,9 +1,10 @@
-import React, {forwardRef, Fragment, ForwardedRef} from "react";
-import { MaterialIcons, Ionicons, FontAwesome, Octicons} from '@expo/vector-icons';
-import {Text,View, TextInput,TouchableOpacity, TextInputProps} from 'react-native';
+import React, {forwardRef, Fragment, ForwardedRef, LegacyRef} from "react";
 
+import {Text,View, TextInput,TouchableOpacity, TextInputProps, StyleProp, TextStyle} from 'react-native';
 import { style } from "./styles";
 import {themas} from "../../global/themes";
+
+import { MaterialIcons, Ionicons, FontAwesome, Octicons} from '@expo/vector-icons';
 
 type IconComponent = React.ComponentType<React.ComponentProps<typeof MaterialIcons>> |
                      React.ComponentType<React.ComponentProps<typeof Ionicons>> |
@@ -18,11 +19,13 @@ type Props = TextInputProps & {
   title?: string,
   onIconLeftPress?: () => void,
   onIconRightPress?: () => void,
+  height?: number,
+  labelStyle?:StyleProp<TextStyle>
 }
 
 export const Input = forwardRef((props:Props, ref: ForwardedRef<TextInput>) => {
 
-  const {IconLeft, IconRight, iconLeftName, iconRightName, title, onIconLeftPress, onIconRightPress, ...rest} = props
+  const {IconLeft, IconRight, iconLeftName, iconRightName, title, onIconLeftPress, onIconRightPress, height,labelStyle, ...rest} = props
   
   const calculateSizeWidth = () => {
     if(IconLeft && IconRight){
@@ -38,7 +41,7 @@ export const Input = forwardRef((props:Props, ref: ForwardedRef<TextInput>) => {
     if(IconLeft && IconRight){
       return 0;
     } else if (IconLeft || IconRight){
-      return 15;
+      return 10;
     }else{
       return 20;
     }
@@ -46,8 +49,8 @@ export const Input = forwardRef((props:Props, ref: ForwardedRef<TextInput>) => {
 
   return(
     <Fragment>
-      {title && <Text style={style.titleInput}>{title}</Text>}
-      <View style={[style.boxInput, {paddingLeft:calculateSizePaddingLeft()} ]}>
+      {title && <Text style={[style.titleInput, labelStyle]}>{title}</Text>}
+      <View style={[style.boxInput, {paddingLeft:calculateSizePaddingLeft(), height: height || 40} ]}>
         {IconLeft && iconLeftName &&(
           <TouchableOpacity onPress={onIconLeftPress} style={style.button}>
             <IconLeft name={iconLeftName as any} size={20} color={themas.colors.textSecondary} style={style.icon}/>
@@ -55,7 +58,7 @@ export const Input = forwardRef((props:Props, ref: ForwardedRef<TextInput>) => {
         )}
         <TextInput 
           style={[
-            style.input,{width:calculateSizeWidth()}
+            style.input,{width:calculateSizeWidth(), height:'100%'}
           ]}
           {...rest}
         />

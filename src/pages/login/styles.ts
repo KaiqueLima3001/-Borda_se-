@@ -8,10 +8,29 @@ export const style = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: themas.colors.primary
   },
+  backArrow: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
   boxTop:{
     height: Dimensions.get('window').height/3,
     width: '100%',
-    // backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     color: themas.colors.secondary
@@ -19,72 +38,38 @@ export const style = StyleSheet.create({
   logo: {
     width: '100%',
     height: '100%',
-    // backgroundColor: 'red'
   },
-
   title: {
     fontWeight: 'bold',
     marginTop: 40,
     fontSize:18
   },
-  
   boxMid:{
     height: Dimensions.get('window').height/4,
     width: '100%',
-    // backgroundColor: 'green',
     paddingHorizontal: 37,
   },
-  /*
-  titleInput: {
-    marginLeft: 5,
-    color: themas.colors.secondary,
-    marginTop: 20,
-  },
-  boxInput: {
-    width: '100%',
-    height: 40,
-    borderWidth:1,
-    borderRadius: 40,
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal:5,
-    backgroundColor: themas.colors.surface,
-    borderColor: themas.colors.border,
-    // color: themas.colors.textPrimary,
-    // placeholderTextColor: themas.colors.textSecondary,
-  },
-  input: {
-    height: '100%',
-    width: '90%',
-    // backgroundColor: 'red',
-    borderRadius: 40,
-    paddingLeft: 5,
-  },
-  */
-
   boxBottom:{
     height: Dimensions.get('window').height/3.5,
     width: '100%',
-    // backgroundColor: 'blue',
     alignItems: 'center',
+    paddingTop: 20, 
   },
-  /*
-  button: {
-    width: 200,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: themas.colors.buttonPrimary,
-    borderRadius: 40,
-  },
-  textButton: {
-    fontSize: 16,
-    color: themas.colors.buttonText,
-    fontWeight: 'bold'
-  },*/
   textRegister: {
     fontSize: 16,
     color: themas.colors.textSecondary
+  },
+  forgotPasswordButton: {
+    width: '100%', 
+    alignItems: 'center', 
+    marginTop: 15, 
+    paddingVertical: 10,
+  },
+  forgotPasswordText: {
+    color: themas.colors.accent,
+    fontSize: 14,
+    fontWeight: '600',
+    textDecorationLine: 'underline',
+    textAlign: 'center',
   },
 });

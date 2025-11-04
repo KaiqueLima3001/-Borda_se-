@@ -4,9 +4,9 @@ import { MaterialIcons, Ionicons, FontAwesome, Octicons} from '@expo/vector-icon
 import {useNavigation, NavigationProp, useRoute} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
-import {style} from './styles';
+import { style } from './styles';
+import { themas } from "../../global/themes";
 import Logo from '../../assets/logo.png';
-import {themas} from "../../global/themes";
 import {Input} from "../../components/input/index";
 import {Button} from "../../components/button/index";
 
@@ -17,8 +17,8 @@ export default function Login () {
   const route = useRoute();
   const { tipo } = route.params || { tipo: 'pf' };
 
-  const [cpfcnpj, setCpfCnpj] = useState('');
-  const [password, setPassword] = useState('');
+  const [cpfcnpj, setCpfCnpj] = useState('0000');
+  const [password, setPassword] = useState('123456');
   const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -30,13 +30,12 @@ export default function Login () {
       const dados = await resposta.json();
 
       if(!cpfcnpj || !password){
-        return Alert.alert('Atenção! Informe os campos obrigatórios.');
+        return Alert.alert('Atenção',' Informe os campos obrigatórios!');
       }
-
-      console.log(dados);
+      // console.log(dados);
 
       if (!dados.documents) {
-        Alert.alert('Erro ao buscar usuários. Tente novamente mais tarde.');
+        Alert.alert('Erro ao buscar usuário','Tente novamente mais tarde.');
         return;
       }
 
@@ -65,25 +64,23 @@ export default function Login () {
     }
   }
 
-  // async function getLogin(){
-  //   try {
-  //     setLoading(true)
+  const handleForgotPassword = () => {
+    navigation.navigate('Recovery');
+  }
 
-  //     if(!cpfcnpj || !password){
-  //       return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
-  //     }
-
-  //     Alert.alert('Logado com sucesso')
-
-  //   } catch (error) {
-  //     console.log(error)
-  //   }finally{
-  //     setLoading(false)
-  //   }
-  // }
+  const handleBackToProfileSelection = () => {
+    navigation.navigate('welcome');
+  }
 
   return(
     <View style={style.container}>
+      <TouchableOpacity 
+          style={style.backArrow}
+          onPress={handleBackToProfileSelection}
+        >
+          <Ionicons name="arrow-back" size={28} color={themas.colors.textPrimary} />
+      </TouchableOpacity>
+      
       <View style={style.boxTop}>
         <Image
           source={Logo}
@@ -96,7 +93,6 @@ export default function Login () {
           value={cpfcnpj}
           onChangeText={setCpfCnpj}
           title={tipo == 'pj' ? "CNPJ" : "CPF"}
-
           IconRight={FontAwesome}
           iconRightName="id-card-o"
         />
@@ -113,8 +109,14 @@ export default function Login () {
 
       <View style={style.boxBottom}>
         <Button text="ENTRAR" loading={loading} onPress={()=> autenticar()}/>
+
+        <TouchableOpacity 
+          style={style.forgotPasswordButton}
+          onPress={handleForgotPassword}
+        >
+          <Text style={style.forgotPasswordText}>Esqueci a senha</Text>
+        </TouchableOpacity>
       </View>
-      <Text style={style.textRegister}>Não tem conta? <Text style={{color:themas.colors.textPrimary}}> Crie agora!</Text></Text>
     </View>
   )
 }
