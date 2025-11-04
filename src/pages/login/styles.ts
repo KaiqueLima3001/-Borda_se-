@@ -11,78 +11,45 @@ export const style = StyleSheet.create({
   boxTop:{
     height: Dimensions.get('window').height/3,
     width: '100%',
-    // backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     color: themas.colors.secondary
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: '100%',
+    height: '100%',
   },
   title: {
     fontWeight: 'bold',
     marginTop: 40,
     fontSize:18
   },
-  
   boxMid:{
     height: Dimensions.get('window').height/4,
     width: '100%',
-    // backgroundColor: 'green',
     paddingHorizontal: 37,
   },
-  /*
-  titleInput: {
-    marginLeft: 5,
-    color: themas.colors.secondary,
-    marginTop: 20,
-  },
-  boxInput: {
-    width: '100%',
-    height: 40,
-    borderWidth:1,
-    borderRadius: 40,
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal:5,
-    backgroundColor: themas.colors.surface,
-    borderColor: themas.colors.border,
-    // color: themas.colors.textPrimary,
-    // placeholderTextColor: themas.colors.textSecondary,
-  },
-  input: {
-    height: '100%',
-    width: '90%',
-    // backgroundColor: 'red',
-    borderRadius: 40,
-    paddingLeft: 5,
-  },
-  */
-
   boxBottom:{
     height: Dimensions.get('window').height/3.5,
     width: '100%',
-    // backgroundColor: 'blue',
     alignItems: 'center',
+    paddingTop: 20, 
   },
-  /*
-  button: {
-    width: 200,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: themas.colors.buttonPrimary,
-    borderRadius: 40,
-  },
-  textButton: {
-    fontSize: 16,
-    color: themas.colors.buttonText,
-    fontWeight: 'bold'
-  },*/
   textRegister: {
     fontSize: 16,
     color: themas.colors.textSecondary
+  },
+  forgotPasswordButton: {
+    width: '100%', 
+    alignItems: 'center', 
+    marginTop: 15, 
+    paddingVertical: 10,
+  },
+  forgotPasswordText: {
+    color: themas.colors.accent,
+    fontSize: 14,
+    fontWeight: '600',
+    textDecorationLine: 'underline',
+    textAlign: 'center',
   },
 });

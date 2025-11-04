@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "projeto-borda-se",
-    "slug": "snack-74ff36fe-f70e-4edb-9901-adac87e2eae7",
+    "name": "github.com/kaiquelima3001/-borda_se-",
+    "slug": "snack-30e19880-d29d-4084-9601-2b28767bb117",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +24,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "github.com/KaiqueLima3001/-Borda_se- @ Nov 3, 2025"
   }
 }

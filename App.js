@@ -6,6 +6,7 @@ import Login from './src/pages/login';
 import Routes from './src/routes/index.routes';
 import {themas} from './src/global/themes'
 
+
 export default function App() {
   return (
     <NavigationContainer>
