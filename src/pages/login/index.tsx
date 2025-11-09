@@ -42,15 +42,16 @@ export default function Login() {
       return Alert.alert('Atenção', ' Informe os campos obrigatórios!');
     }
 
-    // if (
-    //   identificadorDigitado.length !== 11 && // CPF
-    //   identificadorDigitado.length !== 14 // CNPJ
-    // ) {
-    //   return Alert.alert(
-    //     'Erro',
-    //     'O CPF/CNPJ deve ter 11 (CPF) ou 14 (CNPJ) dígitos.',
-    //   );
-    // }
+    if (
+      identificadorDigitado !== '0000' &&
+      identificadorDigitado.length !== 11 && // CPF
+      identificadorDigitado.length !== 14 // CNPJ
+    ) {
+      return Alert.alert(
+        'Erro',
+        'O CPF/CNPJ deve ter 11 (CPF) ou 14 (CNPJ) dígitos.',
+      );
+    }
     
     setLoading(true);
 
@@ -159,4 +160,5 @@ export default function Login() {
       </View>
     </View>
   );
+
 }
