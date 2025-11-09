@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "main-bordase",
-    "slug": "snack-aaba23bb-884e-444e-8e69-8dffe69407ef",
+    "name": "main-borda-se",
+    "slug": "snack-05a288ad-c837-4741-b67c-9adbc818670f",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +24,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "github.com/KaiqueLima3001/-Borda_se- @ Nov 4, 2025"
   }
 }

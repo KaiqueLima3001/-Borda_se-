@@ -1,15 +1,18 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from 'react-native';
+import { themes } from '../../global/themes';
+import { Metrics } from '../../global/metrics';
 
-import {themas} from "../../global/themes";
-
-export const style = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
-    width: 70,
-    height: 30,
+    paddingVertical: Metrics.spacing.xs, // 4px
+    paddingHorizontal: Metrics.spacing.sm, // 8px
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: themas.colors.error,
-    borderRadius: 4,
+    borderRadius: Metrics.radii.sm, // 4px 
   },
-
-}) 
+  text: {
+    fontFamily: themes.fonts.regular,
+    fontSize: themes.fontSizes.sm, // 14px 
+    color: themes.colors.buttonText, 
+  },
+});

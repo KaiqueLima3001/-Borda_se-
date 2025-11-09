@@ -1,39 +1,45 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet, Platform } from 'react-native';
+import { themes } from '../../global/themes';
+import { Metrics } from '../../global/metrics';
 
-import {themas} from "../../global/themes";
-
-export const style = StyleSheet.create({
-  titleInput: {
-    marginLeft: 5,
-    color: themas.colors.secondary,
-    marginTop: 20,
-  },
-  boxInput: {
+export const styles = StyleSheet.create({
+  container: {
     width: '100%',
-    height: 40,
-    borderWidth:1,
-    borderRadius: 40,
-    marginTop: 10,
+    marginBottom: Metrics.spacing.md,
+  },
+  label: {
+    fontSize: themes.fontSizes.sm,
+    color: themes.colors.textPrimary,
+    fontFamily: themes.fonts.medium,
+    marginBottom: Metrics.spacing.xs,
+    marginLeft: Metrics.spacing.sm,
+  },
+  inputContainer: {
+    width: '100%',
+    minHeight: Metrics.buttonHeight, 
     flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal:5,
-    backgroundColor: themas.colors.surface,
-    borderColor: themas.colors.border,
-    color: themas.colors.textPrimary,
-    // placeholderTextColor: themas.colors.textSecondary,
+    alignItems: 'center', 
+    backgroundColor: themes.colors.surface,
+    borderWidth: 1,
+    borderColor: themes.colors.border,
+    borderRadius: Metrics.radii.lg, // 12
+    paddingHorizontal: Metrics.spacing.sm,
   },
-  input: {
-    height: '100%',
-    width: '90%',
-    // backgroundColor: 'red',
-    borderRadius: 40,
-    paddingLeft: 5,
-    
+  inputContainerFocused: {
+    borderColor: themes.colors.primary, 
   },
-  icon: {
-    width: '100%',
+  textInput: {
+    flex: 1,
+    // height: '100%',
+    fontSize: themes.fontSizes.md,
+    fontFamily: themes.fonts.regular,
+    color: themes.colors.textPrimary,
+    paddingHorizontal: Metrics.spacing.sm,
+    textAlignVertical: 'center',
+    paddingTop: Platform.OS === 'ios' ? Metrics.spacing.sm : Metrics.spacing.sm,
+    paddingBottom: Platform.OS === 'ios' ? Metrics.spacing.sm : Metrics.spacing.sm,
   },
-  button: {
-    width: '10%'
-  }
-}) 
+  iconButton: {
+    padding: Metrics.spacing.xs,
+  },
+});

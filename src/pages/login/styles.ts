@@ -1,12 +1,13 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import {themas} from '../../global/themes'
+import {themes} from '../../global/themes'
+import { Metrics } from '../../global/metrics'; 
 
 export const style = StyleSheet.create({
   container:{
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: themas.colors.primary
+    backgroundColor: themes.colors.primary
   },
   backArrow: {
     position: 'absolute',
@@ -33,7 +34,7 @@ export const style = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    color: themas.colors.secondary
+    color: themes.colors.secondary
   },
   logo: {
     width: '100%',
@@ -50,14 +51,15 @@ export const style = StyleSheet.create({
     paddingHorizontal: 37,
   },
   boxBottom:{
-    height: Dimensions.get('window').height/3.5,
+    height: 'auto', 
     width: '100%',
     alignItems: 'center',
-    paddingTop: 20, 
+    marginTop: Metrics.spacing.md, 
+    paddingHorizontal: 37,
   },
   textRegister: {
     fontSize: 16,
-    color: themas.colors.textSecondary
+    color: themes.colors.textSecondary
   },
   forgotPasswordButton: {
     width: '100%', 
@@ -66,7 +68,7 @@ export const style = StyleSheet.create({
     paddingVertical: 10,
   },
   forgotPasswordText: {
-    color: themas.colors.accent,
+    color: themes.colors.accent,
     fontSize: 14,
     fontWeight: '600',
     textDecorationLine: 'underline',

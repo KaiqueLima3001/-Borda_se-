@@ -1,48 +1,99 @@
-import React, {useContext} from "react";
-import {Text, View, TouchableOpacity} from 'react-native';
-import { MaterialIcons, Ionicons, FontAwesome, Octicons, AntDesign, Entypo} from '@expo/vector-icons';
+import React from 'react';
+import { View, TouchableOpacity,Image } from 'react-native';
+import {
+  MaterialIcons,
+  FontAwesome,
+  AntDesign,
+  Entypo,
+} from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { styles } from './styles';
+import { themes } from '../../global/themes';
+import { Metrics } from '../../global/metrics';
 
-import { style } from "./styles";
-import {themas} from "../../global/themes";
-import {AuthContextList} from "../../context/authContext_list"
+import { useList } from '../../context/listContext';
+import { useAuth } from '../../context/authContext'; 
+import Logo from '../../assets/logo.png'; 
 
+export default ({ state, navigation }) => {
+  const { bottom: bottomInset } = useSafeAreaInsets();
 
-export default ({state, navigation}) =>{
+  const { onOpen } = useList();
+  const { user } = useAuth();
 
-  const {onOpen} = useContext<any>(AuthContextList)
-  const go = (screenName:string) => {
-    navigation.navigate(screenName)
-  }
+  const go = (screenName: string) => {
+    navigation.navigate(screenName);
+  };
 
-  return(
-    <View style={style.tabArea}>
-      <TouchableOpacity style={style.tabItem} onPress={()=>go("List")}>
-        <AntDesign
-          name="bars"
-          style={{opacity:state.index === 0?1:0.3, color:themas.colors.secondary, fontSize:32}}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={style.tabItemButton} onPress={()=>onOpen()}>
-        <View style={{width:'100%', left:10, top:4}}>
-          <Entypo name="plus" size={40} color={themas.colors.surface}/>
+  const iconSize = themes.fontSizes.xl; // 24
+
+  return (
+    <View style={styles.container}>
+      {user?.role === 'admin' ? (
+        <TouchableOpacity
+          style={[
+            styles.middleButton,
+            { bottom: bottomInset + Metrics.spacing.md },
+          ]}
+          onPress={() => onOpen()}
+        >
+        <View style={styles.middleButtonIconTopLeft}>
+          <Entypo name="plus" size={36} color={themes.colors.surface} />
         </View>
 
-        <View style={{flexDirection:'row-reverse',width:'100%', right:10, bottom:10}}>
-          <MaterialIcons
-            name="edit"
-            style={{color:themas.colors.surface}}
-            size={30}
+        <View style={styles.middleButtonIconBottomRight}>
+          <MaterialIcons name="edit" size={28} color={themes.colors.surface} />
+        </View>
+      </TouchableOpacity>
+        
+      ) : (
+        <View
+          style={[
+            styles.middleButtonLogo, 
+            { bottom: bottomInset + Metrics.spacing.md },
+          ]}>
+          <Image
+            source={Logo}
+            style={styles.logoImage} 
+            resizeMode="contain"
           />
         </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={style.tabItem} onPress={()=>go("User")}>
-        <FontAwesome
-          name="user"
-          style={{opacity:state.index === 1?1:0.3, color:themas.colors.secondary, fontSize:32, }}
-        />
-      </TouchableOpacity>
-    
+      )}
+
+      <View
+        style={[
+          styles.tabArea,
+          {
+            height: Metrics.buttonHeight + bottomInset,
+            paddingBottom: bottomInset,
+          },
+        ]}>
+
+        <TouchableOpacity style={styles.tabItem} onPress={() => go('List')}>
+          <AntDesign
+            name="bars"
+            size={iconSize}
+            color={
+              state.index === 0
+                ? themes.colors.primary 
+                : themes.colors.textSecondary
+            }
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.tabItem} onPress={() => go('User')}>
+          <FontAwesome
+            name="user"
+            size={iconSize}
+            color={
+              state.index === 1
+                ? themes.colors.primary 
+                : themes.colors.textSecondary 
+            }
+          />
+        </TouchableOpacity>
+      </View>
     </View>
-  )
-}
+  );
+};

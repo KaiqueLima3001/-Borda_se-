@@ -1,15 +1,18 @@
-import React from "react";
-import {View, TouchableOpacity, Text} from 'react-native';
-import { style } from "./styles";
+import React from 'react';
+import { TouchableOpacity, Text, View } from 'react-native';
+import { styles } from './styles';
 
 type Props = {
-  caption: string,
-  color: string,
-}
-export function Flag({...rest}:Props){
-  return(
-    <TouchableOpacity style={[style.container, {backgroundColor:rest?.color}]}>
-      <Text style={{color: '#fff'}}> {rest.caption}</Text>
-    </TouchableOpacity>
-  )
+  caption: string;
+  color: string;
+};
+
+export function Flag({ caption, color }: Props) {
+  return (
+    <View
+     style={[styles.container, { backgroundColor: color }]}
+    >
+      <Text style={styles.text}>{caption}</Text>
+    </View>
+  );
 }

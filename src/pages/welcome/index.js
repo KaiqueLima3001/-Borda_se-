@@ -3,11 +3,11 @@ import { SafeAreaView, View, Text, StyleSheet, Image, TouchableOpacity, Dimensio
 import {useNavigation} from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
-import {themas} from "../../global/themes";
+import {themes} from "../../global/themes";
 
 export default function Welcome() {
   const navigation = useNavigation();
-
+  
   function handlePessoaFisica() {
     navigation.navigate('Login', { tipo: 'pf' });
   }
@@ -17,7 +17,7 @@ export default function Welcome() {
   }
 
   function handleRegister() {
-    console.log('Navegando para Register...');
+    // console.log('Navegando para Register...');
     navigation.navigate('Register');
   }
   
@@ -58,13 +58,13 @@ export default function Welcome() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: themas.colors.primary,
+    backgroundColor: themes.colors.primary,
   },
   header: {
     height: height * 0.45,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: themas.colors.primary,
+    backgroundColor: themes.colors.primary,
   },
   image: {
     width: width * 0.7,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: themas.colors.background, 
+    backgroundColor: themes.colors.background, 
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
     paddingHorizontal: 24,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   smallTitle: {
     alignSelf: 'center',
-    color: themas.colors.textSecondary,
+    color: themes.colors.textSecondary,
     marginBottom: 8,
     fontSize: 18,
     fontWeight: '500',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    color: themas.colors.textPrimary,
+    color: themes.colors.textPrimary,
     fontSize: 28,
     fontWeight: '700',
     marginBottom: 32,
@@ -106,13 +106,13 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: themas.colors.surface,
+    backgroundColor: themes.colors.surface,
     paddingVertical: 18,
     paddingHorizontal: 20,
     borderRadius: 16,
     marginVertical: 8,
     borderWidth: 1,
-    borderColor: themas.colors.border,
+    borderColor: themes.colors.border,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 12,
-    backgroundColor: themas.colors.primary,
+    backgroundColor: themes.colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 16,
@@ -141,29 +141,31 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 18,
-    color: themas.colors.surface,
+    color: themes.colors.surface,
   },
   rowText: {
     flex: 1,
-    color: themas.colors.textPrimary,
+    color: themes.colors.textPrimary,
     fontSize: 18,
     fontWeight: '600',
     letterSpacing: 0.3,
   },
   chev: {
-    color: themas.colors.textSecondary,
+    color: themes.colors.textSecondary,
     fontSize: 26,
     fontWeight: 'bold',
   },
   linkWrap: {
     marginTop: 24,
     alignItems: 'center',
+    marginBottom: 10
   },
   link: {
-    color: themas.colors.accent,
+    color: themes.colors.accent,
     fontSize: 17,
     fontWeight: '700',
     letterSpacing: 0.3,
     textAlign: 'center',
+    marginBottom: 10
   },
 });

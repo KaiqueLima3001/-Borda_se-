@@ -1,12 +1,14 @@
-import React from "react";
-import {View} from 'react-native';
-import { style } from "./styles";
+import React from 'react';
+import { View } from 'react-native';
+import { styles } from './styles'; 
 
 type Props = {
-  color: string,
-}
-export function Ball({...rest}:Props){
-  return(
-    <View style={[style.ball, {borderColor:rest?.color || 'gray'}]}> </View>
-  )
+  color: string;
+};
+
+export function Ball({ color }: Props) {
+  return (
+    // Aplica o estilo base e, em seguida, o objeto com a cor (que sobrepõe a cor padrão)
+    <View style={[styles.ball, { borderColor: color }]} />
+  );
 }

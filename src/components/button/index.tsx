@@ -1,21 +1,66 @@
-import React from "react";
-import {TouchableOpacity, TouchableHighlightProps, ActivityIndicator, Text} from 'react-native';
+import React from 'react';
+import {
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ActivityIndicator,
+  Text,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 
-import { style } from "./styles";
-import {themas} from "../../global/themes";
+import { styles } from './styles';
+import { themes } from '../../global/themes';
 
-type Props = TouchableHighlightProps & {
-  text: string,
-  loading?:boolean,
-}
-export function Button({...rest}:Props){
-  return(
-    <TouchableOpacity 
-      style={style.button}
+type Props = TouchableOpacityProps & {
+  title: string;
+  loading?: boolean;
+  /**
+   * Define o estilo do botão.
+   * 'primary' (padrão): Fundo sólido.
+   * 'outline': Transparente com borda.
+   */
+  variant?: 'primary' | 'outline';
+};
+
+export function Button({
+  title,
+  loading = false,
+  variant = 'primary',
+  style, 
+  ...rest
+}: Props) {
+  const containerStyle: ViewStyle[] = [
+    styles.container,
+    variant === 'outline' ? styles.containerOutline : styles.containerPrimary,
+  ];
+
+  const textStyle: TextStyle[] = [
+    styles.text,
+    variant === 'outline' ? styles.textOutline : styles.textPrimary,
+  ];
+
+  if (style) {
+    containerStyle.push(style as ViewStyle);
+  }
+
+  return (
+    <TouchableOpacity
+      style={containerStyle}
       {...rest}
-      activeOpacity={0.6}
+      activeOpacity={0.7} 
+      disabled={loading || rest.disabled}
     >
-      {rest.loading?<ActivityIndicator/>: <Text style={style.textButton}>{rest.text}</Text>}
+      {loading ? (
+        <ActivityIndicator
+          color={
+            variant === 'outline'
+              ? themes.colors.buttonPrimary
+              : themes.colors.buttonText
+          }
+        />
+      ) : (
+        <Text style={textStyle}>{title}</Text>
+      )}
     </TouchableOpacity>
-  )
+  );
 }

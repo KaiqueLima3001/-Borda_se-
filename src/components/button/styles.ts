@@ -1,19 +1,35 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from 'react-native';
+import { themes } from '../../global/themes';
+import { Metrics } from '../../global/metrics';
+import { GlobalStyles } from '../../global/styles';
 
-import {themas} from "../../global/themes";
-
-export const style = StyleSheet.create({
-  button: {
-    width: 200,
-    height: 50,
+export const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: Metrics.buttonHeight,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: themas.colors.buttonPrimary,
-    borderRadius: 40,
+    borderRadius: Metrics.radii.pill, 
   },
-  textButton: {
-    fontSize: 16,
-    color: themas.colors.buttonText,
-    // fontWeight: 'bold'
+  text: {
+    fontSize: themes.fontSizes.md, 
+    fontWeight: 'bold', 
   },
-}) 
+
+  containerPrimary: {
+    backgroundColor: themes.colors.buttonPrimary,
+    ...GlobalStyles.shadow, 
+  },
+  textPrimary: {
+    color: themes.colors.buttonText,
+  },
+
+  containerOutline: {
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: themes.colors.buttonPrimary,
+  },
+  textOutline: {
+    color: themes.colors.buttonPrimary,
+  },
+});

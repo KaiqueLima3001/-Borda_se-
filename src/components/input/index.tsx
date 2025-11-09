@@ -1,73 +1,101 @@
-import React, {forwardRef, Fragment, ForwardedRef, LegacyRef} from "react";
-
-import {Text,View, TextInput,TouchableOpacity, TextInputProps, StyleProp, TextStyle} from 'react-native';
-import { style } from "./styles";
-import {themas} from "../../global/themes";
-
-import { MaterialIcons, Ionicons, FontAwesome, Octicons} from '@expo/vector-icons';
-
-type IconComponent = React.ComponentType<React.ComponentProps<typeof MaterialIcons>> |
-                     React.ComponentType<React.ComponentProps<typeof Ionicons>> |
-                     React.ComponentType<React.ComponentProps<typeof FontAwesome>> |
-                     React.ComponentType<React.ComponentProps<typeof Octicons>>;
+import React, { useState, forwardRef, ForwardedRef } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TextInputProps,
+  StyleProp,
+  ViewStyle,
+  TextStyle, 
+} from 'react-native';
+import { styles } from './styles';
+import { themes } from '../../global/themes';
 
 type Props = TextInputProps & {
-  IconLeft?: IconComponent,
-  IconRight?: IconComponent,
-  iconLeftName?: string,
-  iconRightName?: string,
-  title?: string,
-  onIconLeftPress?: () => void,
-  onIconRightPress?: () => void,
-  height?: number,
-  labelStyle?:StyleProp<TextStyle>
-}
+  title: string;
+  labelStyle?: StyleProp<TextStyle>;
+  IconLeft?: React.ElementType;
+  iconLeftName?: string;
+  onIconLeftPress?: () => void;
+  IconRight?: React.ElementType;
+  iconRightName?: string;
+  onIconRightPress?: () => void;
+  containerStyle?: StyleProp<ViewStyle>;
+  inputStyle?: StyleProp<TextStyle>;
+};
 
-export const Input = forwardRef((props:Props, ref: ForwardedRef<TextInput>) => {
+export const Input = forwardRef(
+  (
+    {
+      title,
+      labelStyle,
+      IconLeft,
+      iconLeftName,
+      onIconLeftPress,
+      IconRight,
+      iconRightName,
+      onIconRightPress,
+      containerStyle, 
+      inputStyle,
+      onFocus,
+      onBlur,
+      ...rest
+    }: Props,
+    ref: ForwardedRef<TextInput>,
+  ) => {
+    const [isFocused, setIsFocused] = useState(false);
 
-  const {IconLeft, IconRight, iconLeftName, iconRightName, title, onIconLeftPress, onIconRightPress, height,labelStyle, ...rest} = props
-  
-  const calculateSizeWidth = () => {
-    if(IconLeft && IconRight){
-      return '80%';
-    } else if (IconLeft || IconRight){
-      return '90%';
-    }else{
-      return '100%';
-    }
-  }
+    const handleFocus = (e: any) => {
+      setIsFocused(true);
+      if (onFocus) onFocus(e);
+    };
 
-  const calculateSizePaddingLeft = () => {
-    if(IconLeft && IconRight){
-      return 0;
-    } else if (IconLeft || IconRight){
-      return 10;
-    }else{
-      return 20;
-    }
-  }
+    const handleBlur = (e: any) => {
+      setIsFocused(false);
+      if (onBlur) onBlur(e);
+    };
 
-  return(
-    <Fragment>
-      {title && <Text style={[style.titleInput, labelStyle]}>{title}</Text>}
-      <View style={[style.boxInput, {paddingLeft:calculateSizePaddingLeft(), height: height || 40} ]}>
-        {IconLeft && iconLeftName &&(
-          <TouchableOpacity onPress={onIconLeftPress} style={style.button}>
-            <IconLeft name={iconLeftName as any} size={20} color={themas.colors.textSecondary} style={style.icon}/>
-          </TouchableOpacity>
-        )}
-        <TextInput 
+    return (
+      <View style={[styles.container, containerStyle]}>
+        <Text style={[styles.label, labelStyle]}>{title}</Text>
+        <View
           style={[
-            style.input,{width:calculateSizeWidth(), height:'100%'}
-          ]}
-          {...rest}
-        />
-        {IconRight && iconRightName &&(
-          <TouchableOpacity onPress={onIconRightPress}>
-            <IconRight name={iconRightName as any} size={20} color={themas.colors.textSecondary} style={style.icon}/>
-          </TouchableOpacity>
-        )}
+            styles.inputContainer,
+            isFocused && styles.inputContainerFocused,
+          ]}>
+          {IconLeft && iconLeftName && (
+            <TouchableOpacity onPress={onIconLeftPress} style={styles.iconButton}>
+              <IconLeft
+                name={iconLeftName}
+                size={22}
+                color={themes.colors.textSecondary}
+              />
+            </TouchableOpacity>
+          )}
+
+          <TextInput
+            ref={ref}
+            style={[styles.textInput, inputStyle]} 
+            placeholderTextColor={themes.colors.textSecondary}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            {...rest}
+          />
+
+          {IconRight && iconRightName && (
+            <TouchableOpacity
+              onPress={onIconRightPress}
+              style={styles.iconButton}>
+              <IconRight
+                name={iconRightName}
+                size={22}
+                color={themes.colors.textSecondary}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
-    </Fragment>
-  )
-})
+    );
+  },
+);
