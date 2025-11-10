@@ -61,7 +61,8 @@ const ListContext = createContext({} as ListContextData);
 const flags: FlagData[] = [
   { caption: 'Produção', color: themes.colors.primary },
   { caption: 'Entregue', color: themes.colors.success },
-  { caption: 'Cancelado', color: themes.colors.accent },
+  { caption: 'Cancelado', color: themes.colors.error },
+  { caption: 'Pronto', color: themes.colors.blue },
 ];
 
 export const ListProvider = (props: ListProviderProps) => {
@@ -337,7 +338,7 @@ export const ListProvider = (props: ListProviderProps) => {
           />
           <View style={{ width: '60%' }}>
             <Input
-              title="Tempo Limite:"
+              title="Prazo de Entrega:"
               labelStyle={styles.label}
               placeholder="Ex: 30 dias"
               value={time}
@@ -421,4 +422,5 @@ export const useList = () => {
     throw new Error('useList deve ser usado dentro de um ListProvider');
   }
   return context;
+
 };
