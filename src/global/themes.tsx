@@ -13,6 +13,7 @@ export const themes = {
     error: '#D7263D', // Vermelho elegante - sem exagero
     success: '#3BB273', // Verde equilibrado - para mensagens positivas
     orange: '#FFA500',
+    blue: '#3B82F6',
     transparent: 'rgba(0, 0, 0, 0.5)',
   },
   fonts: {
@@ -28,4 +29,5 @@ export const themes = {
     xl: 24, // Extra grande (títulos)
     xxl: 32, // Título principal
   },
+
 };
