@@ -82,7 +82,7 @@ export default function List() {
               {item.timeLimit ? (
                 <View style={styles.timeLimitContainer}>
                   <MaterialIcons name="access-time" size={14} color={themes.colors.error} />
-                  <Text style={styles.timeLimitText}>Prazo limite: {item.timeLimit}</Text>
+                  <Text style={styles.timeLimitText}>Prazo de Entrega: {item.timeLimit}</Text>
                 </View>
               ) : null}
             </View>
@@ -151,4 +151,5 @@ export default function List() {
       <View style={styles.boxList}>{_renderContent()}</View>
     </SafeAreaView>
   );
+
 }
