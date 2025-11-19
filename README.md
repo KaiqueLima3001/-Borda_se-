@@ -85,13 +85,13 @@ O projeto foi construído utilizando uma stack moderna e tipada:
 ## 📂 Estrutura do Projeto
 
 A arquitetura segue padrões de **Clean Code** e **Atomic Design** adaptado:
-src/ 
-├── components/ # Componentes reutilizáveis (Input, Button, Flag...) 
-├── config/ # Configurações de API e Firebase 
-├── context/ # Gerenciamento de Estado Global (Auth e List) 
-├── global/ # Tokens de Design (Cores, Fontes, Métricas) 
-├── pages/ # Telas da aplicação (Login, List, User...) 
-├── routes/ # Configuração de Navegação (Stack e Tabs) 
+src/ \\
+├── components/ # Componentes reutilizáveis (Input, Button, Flag...) \\
+├── config/ # Configurações de API e Firebase \\
+├── context/ # Gerenciamento de Estado Global (Auth e List) \\
+├── global/ # Tokens de Design (Cores, Fontes, Métricas) \\
+├── pages/ # Telas da aplicação (Login, List, User...) \\
+├── routes/ # Configuração de Navegação (Stack e Tabs) \\
 └── assets/ # Imagens e ícones estáticos
 
 ---
