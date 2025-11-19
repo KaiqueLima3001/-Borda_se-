@@ -57,7 +57,7 @@ O projeto foi construído utilizando uma stack moderna e tipada:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/KaiqueLima3001/-Borda_se-.git](https://github.com/seu-usuario/borda-se.git)
+    git clone [https://github.com/KaiqueLima3001/-Borda_se-.git](https://github.com/KaiqueLima3001/-Borda_se-.git)
     cd borda-se
     ```
 
