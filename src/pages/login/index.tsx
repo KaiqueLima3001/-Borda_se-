@@ -29,8 +29,8 @@ export default function Login() {
 
   const { signIn } = useAuth();
 
-  const [identificador, setIdentificador] = useState('0000');
-  const [password, setPassword] = useState('123456');
+  const [identificador, setIdentificador] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -162,3 +162,4 @@ export default function Login() {
   );
 
 }
+
